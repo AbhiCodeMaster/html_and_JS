@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>example of accesing a value</title>
+    </head>
+    <body>
+        <h1>another example of closure</h1>
+
+        <script>
+          /*  function outer(){
+                let outvalue = 50;
+
+                return function test(){
+                    let a = 5;
+
+                    return function inner(){
+                        return a*outvalue;
+                    }
+                }
+            }
+            let closure1 = outer();
+            let closure2 = closure1();
+            console.log(closure2());*/
+                                                           //another program
+
+            /*function test(){
+                let a = 1000;
+
+                let func = function inner(){
+                    return a*a;
+                }
+                //a = 20;
+                return func;
+            }
+            let closure1 = test();
+            console.log(closure1());*/
+                                                            //another program
+
+            function add(x){
+                return function(y){
+                    return x+y;
+                }
+            }
+            const adding = add(9);
+            console.log(adding(10));
+
+            
+        </script>
+    </body>
+</html>

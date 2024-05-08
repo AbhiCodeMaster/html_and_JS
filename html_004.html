@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>timing</title>
+    </head>
+    <body>
+        
+        <p id="para">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam, temporibus vitae facilis maxime asperiores ut eius minus eveniet quis omnis, voluptatibus optio, sed dolor velit sapiente deleniti molestias laborum? Facere doloremque ipsa optio at beatae dicta maiores pariatur consectetur! Illo reiciendis corporis eos consectetur atque.</p>
+
+        <button type="button" id="btn">off</button>
+
+
+        <script>
+            var timeoutID = setTimeout(function(){
+                document.getElementById("para").style = 'color :red';
+            }, 3000);
+            document.getElementById("btn").addEventListener("click",function(){
+                clearTimeout(timeoutID);
+            })
+            
+        </script>
+    </body>
+</html>

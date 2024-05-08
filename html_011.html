@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>about method</title>
+    </head>
+    <body>
+        <h1 id="test1"></h1>
+        <script>
+            var mobile = function(model_no,sellingPrice){
+                this.model = model_no;
+                this.sp = sellingPrice;
+                this.color = "black";
+                this.price = 5000;
+
+                this.sprice = function(){
+                    return (this.price + this.sp);
+                }
+
+                this.data = function(){
+                    document.write(`model no. is ${this.model} and price is ${this.sprice()}`);
+                }
+            }
+            var samsung =new mobile("galaxy",6000);
+            //samsung.data();
+            document.write(samsung.sprice());
+            
+        </script>
+    </body>
+</html>

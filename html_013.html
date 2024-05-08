@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <script>
+            var mobile = function(model_no){
+                this.model = model_no;
+                this.price = 4000;
+            }
+            var samsung = new mobile("galaxy");
+            // className.prototype.key = "value"
+            mobile.prototype.color = "white";
+            console.log(samsung);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>accessingthe age</title>
+    </head>
+    <body>
+        <h1 id ="test"></h1>
+        <script>
+            class person{
+                constructor(name,year){
+                    this.name=name;
+                    this.year=year;
+                }
+                age(){
+                    const date = new Date();
+                    return date.getFullYear() - this.year;
+                }
+            }
+            const person1 =new person("abhi",2002);
+            document.getElementById("test").textContent = `${person1.name} is ${person1.age()} year`;
+        </script>
+    </body>
+</html>

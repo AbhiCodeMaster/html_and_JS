@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>making form</title>
+        <body>
+            <form name="fname" action="/action_page.php" onsubmit="validate()" method="post">
+            
+            Name : <input type="text" name="iname">
+            <input type="submit" value="confirm">
+            
+            
+            </form>
+
+            <script>
+
+                function validate(){
+                    var x = document.forms["fname"]["iname"].value;
+
+                    if(x == ""){
+                        alert("Name must be filled out");
+                        return false;
+                    }
+                }
+            </script>
+
+        </body>
+    </head>
+</html>

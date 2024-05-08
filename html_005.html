@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>document2</title>
+    </head>
+    <body>
+        <h1>Closure in javascript</h1>
+        <script>
+            function test(){
+                let x = 100;
+                
+                return function inner(){
+                    return x;
+                }
+            }
+            console.log(test());
+        </script>
+    </body>
+</html>

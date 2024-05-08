@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>WEATHER AAPLICATION</title>
+        <link rel="stylesheet" href="weatherCSS2.css">
+    </head>
+    <body>
+        <Script>
+            const apiKey = "b8e1d4d2efc1db13a885b570af5caf77";
+            const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+
+            const searchBox = document.getElementById("input");
+            const searchBtn = document.querySelector(".box1 button");
+            const weatherIcon = document.querySelector(".weather-icon");
+
+            async function checkWeather(){
+                console.log("searchBox.value",searchBox.value);
+                const response = await fetch(apiUrl + searchBox.value + `&appid=${apiKey}`);
+                var data = await response.json();
+
+                console.log(data);
+
+                document.querySelector(".city").innerHTML = data.name;
+                document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
+                document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+                document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
+
+                if(data.weather[0].main == "Clouds"){
+                    weatherIcon.src = "clouds.png"
+                }
+                else if(data.weather[1].main == "Clear"){
+                    weatherIcon.src = "clear.png";
+                }else if(data.weather[2].main == "Rain"){
+                    weatherIcon.src = "rain.png";
+                }else if(data.weather[3].main == "Drizzle"){
+                    weatherIcon.src = "drizzle";
+                }else if(data.weather[4].main == "Mist"){
+                    weatherIcon.src = "mist.png";
+                }
+                document.querySelector(".weather").style.display = "block";
+            }
+            searchBtn.addEventListener("click", ()=>{
+                checkWeather(searchBox.value);
+            })
+        </Script>
+    <div class="box">
+        <div class="box1">
+            <input id="input" type="text" placeholder="write the name of the city">
+            <button onclick="checkWeather()"><img src="search.png" alt="Something is happening"></button>
+        </div>
+        <div class="weather">
+            <img src="rain.png" class="weather-icon">
+            <h1 class="temp">22°c</h1>
+            <h2 class="city">New York</h2>
+            <div class="details">
+                <div class="col">
+                    <img src="humidity.png">
+                    <div>
+                        <p class="humidity">50%</p>
+                        <p>Humidity</p>
+                        
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="wind.png">
+                    <div>
+                        <p class="wind">15 km/h</p>
+                        <p>wind speed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

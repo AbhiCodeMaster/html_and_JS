@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>experiment 2</title>
+    </head>
+    <body>
+        <script>
+            console.log("start");
+            function getname(name,cb){
+                setTimeout(()=>{
+                    console.log("we are inside setimeout");
+                    cb(name);
+                },3000);
+            }
+
+            const x = getname("mayank",function(x){
+                console.log(x);
+            });
+            console.log("end");
+        </script>
+    </body>
+</html>

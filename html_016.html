@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>testing my code</title>
+    </head>
+    <body>
+        <script>
+           function getHobbies(name,cb){
+            setTimeout(()=>{
+                console.log("we inside in the interval");
+                cb(["football","cricket","listening music"]);
+            },2000);
+           }
+
+           getHobbies("Mayank",(hobby)=>{
+            console.log(hobby);
+           })
+        </script>
+    </body>
+</html>
