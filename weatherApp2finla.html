@@ -1,0 +1,99 @@
+<html>
+  <head>
+    <title>WEATHER APPLICATION</title>
+    <link rel="stylesheet" href="weatherCSS2.css" />
+  </head>
+  <body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const apiKey = "b8e1d4d2efc1db13a885b570af5caf77";
+        const apiUrl =
+          "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+        const searchBox = document.getElementById("input");
+        const searchBtn = document.querySelector(".box1 button");
+        const weatherIcon = document.querySelector(".weather-icon");
+
+        async function checkWeather(input) {
+          console.log("searchBox.value", input);
+          const response = await fetch(apiUrl + input + `&appid=${apiKey}`);
+          var data = await response.json();
+          console.log(data);
+
+          document.querySelector(".city").innerHTML = data.name || "Not found";
+          document.querySelector(".temp").innerHTML = data.main
+            ? Math.round(data.main.temp) + "°c"
+            : "N/A";
+          document.querySelector(".humidity").innerHTML = data.main
+            ? data.main.humidity + "%"
+            : "N/A";
+          document.querySelector(".wind").innerHTML = data.wind
+            ? data.wind.speed + " km/h"
+            : "N/A";
+
+          let weatherCondition =
+            data.weather && data.weather.length > 0
+              ? data.weather[0].main
+              : null;
+          switch (weatherCondition) {
+            case "Clouds":
+              weatherIcon.src = "clouds.png";
+              break;
+            case "Clear":
+              weatherIcon.src = "clear.png";
+              break;
+            case "Rain":
+              weatherIcon.src = "rain.png";
+              break;
+            case "Drizzle":
+              weatherIcon.src = "drizzle.png";
+              break;
+            case "Mist":
+              weatherIcon.src = "mist.png";
+              break;
+            default:
+              weatherIcon.src = "default.png"; // assuming a default icon exists
+          }
+
+          document.querySelector(".weather").style.display = "block";
+        }
+
+        searchBtn.addEventListener("click", function () {
+          checkWeather(searchBox.value);
+        });
+      });
+    </script>
+    <div class="box">
+      <div class="box1">
+        <input
+          id="input"
+          type="text"
+          placeholder="write the name of the city"
+        />
+        <button>
+          <img src="search.png" alt="Search" />
+        </button>
+      </div>
+      <div class="weather" style="display: none">
+        <img src="rain.png" class="weather-icon" />
+        <h1 class="temp">--°c</h1>
+        <h2 class="city">--</h2>
+        <div class="details">
+          <div class="col">
+            <img src="humidity.png" />
+            <div>
+              <p class="humidity">--%</p>
+              <p>Humidity</p>
+            </div>
+          </div>
+          <div class="col">
+            <img src="wind.png" />
+            <div>
+              <p class="wind">-- km/h</p>
+              <p>wind speed</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
